@@ -1,0 +1,18 @@
+{
+    "name": "Chinedu Obi",
+    "age": 24,
+    "country": "Nigeria",
+    "langugages": ["Igbo", "English", "Yoruba"],
+    "marital status": "single",
+    "employee": true,
+    "experience": [
+    {
+    "title": "Frontend Engineering Intern",
+    "company": "Andela"
+    },
+    {
+    "title": "Frontend Engineer",
+    "company": "Paystack"
+    }
+    ]
+}
