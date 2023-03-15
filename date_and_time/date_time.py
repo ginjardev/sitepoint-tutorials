@@ -1,33 +1,137 @@
 """
 Tutorial code for the topic "Understanding Python Date and Time with Examples" @SitePoint
 """
-from datetime import datetime
-from datetime import date
-import time
+from datetime import datetime, date, time, timedelta
+import time as t
 
 
-# get current date and time
-current_date_time = datetime.now()
-print(current_date_time)
+# # get current date and time
+# current_date_time = datetime.now()
+# print(current_date_time)
 
-# get current date
-current_date = date.today()
-print(current_date)
-print(current_date.ctime())
+# # get current date
+# current_date = date.today()
+# print(current_date)
+# print(current_date.ctime())
 
-# create date object
-mydate = date(2023, 3, 13)
-print('The date is: ', mydate)
+# # create date object
+# mydate = date(2023, 3, 13)
+# print('The date is: ', mydate)
 
-# create date from ISO date string
-iso_date = date.fromisoformat('2023-03-13')
-print("Date from ISO format: ", iso_date)
+# # create date from ISO date string
+# iso_date = date.fromisoformat('2023-03-13')
+# print("Date from ISO format: ", iso_date)
 
-# extract year, month, day from date object
-current_date = date.today()
-year = current_date.year
-print("The year is: ", year)
-month = current_date.month
-print("The month is: ", month)
-day = current_date.day
-print("The day is: ", day)
+# # extract year, month, day from date object
+# current_date = date.today()
+# year = current_date.year
+# print("The year is: ", year)
+# month = current_date.month
+# print("The month is: ", month)
+# day = current_date.day
+# print("The day is: ", day)
+
+# # create time object
+# my_time = time()
+# print("My time is: ", my_time)
+
+# # create time from ISO time string
+# iso_time = time.fromisoformat('12:45:12')
+# print('The time says: ', iso_time)
+
+# extract hour, minute, second and microsecond from time object
+# new_time = time(7, 20, 50, 569230)
+# hour = new_time.hour
+# print('Hours: ',hour)
+# minute = new_time.minute
+# print('Minutes: ', minute)
+# second = new_time.second
+# print('Seconds: ', second)
+# microsecond = new_time.microsecond
+# print('Microseconds: ', microsecond)
+
+# #create date time object
+# dt = datetime(2023, 3, 14, 10, 38, 10, 345389)
+# print('The date time is: ', dt)
+
+# # get current local date time
+# print('Current locate date time is: ', datetime.now())
+
+# #create datetime object from ISO string
+# iso_dt = datetime.fromisoformat('2023-03-14 11:25:30.983023')
+# print('Date time from ISO is: ', iso_dt)
+
+# extract date and time attributes from datetime object
+# new_dt = datetime.now()
+
+# year = new_dt.year
+# print('Year : ', year)
+# month = new_dt.month
+# print('Month : ', month)
+# day = new_dt.day
+# print('Day : ', day)
+# hour = new_dt.hour
+# print('Hours : ', hour)
+# minute = new_dt.minute
+# print('Minutes: ', minute)
+# second = new_dt.second
+# print('Seconds: ', second)
+# microsecond = new_dt.microsecond
+# print('Microseconds: ', microsecond)
+
+
+# create timedelta object
+# td = timedelta(10, 30, 4300, 3000, 12, 5, 3)
+# print('Time Delta:', td)
+
+# # format date in datetime object 
+# date_time = datetime.now()
+# formatted_date = date_time.strftime("%m/%d/%Y")
+# print("Formatted Date:", formatted_date)
+
+# # format time in datetime object
+# date_time = datetime.now()
+
+# formatted_time = date_time.strftime("%I:%M:%S")
+# print("Formatted time in 12-hour clock:", formatted_time)
+
+# formatted_time_2 = date_time.strftime("%I:%M:%S %p")
+# print("Formatted time in 12-hour clock indicating time of day:", formatted_time_2)
+
+# format time and date in datetime object 
+# date_time = datetime.now()
+
+# formatted_date_time = date_time.strftime("%d %B %Y, %H:%M:%S")
+# print("Formatted date and time:", formatted_date_time)
+
+# formatted_date_time_2 = date_time.strftime("%A, %d %B %Y, %I:%M %p")
+# print("Formatted date and time in 12-hour clock:", formatted_date_time_2)
+
+# strptime() string to datetime object
+# date_string = "March 15, 23 12:12:20"
+# dt_format = "%B %d, %y %H:%M:%S"
+
+# datetime_from_string = datetime.strptime(date_string, dt_format)
+# print("Datetime from string:", datetime_from_string)
+
+# strptime() string to date object
+# datetime_object = datetime.strptime("15/03/23", "%d/%m/%y")
+# d_o = datetime_object.date()
+
+# print("Date from string:", d_o)
+
+# # strptime() string to date object
+# time_object = datetime.strptime("15 Mar, 2023 13:50:30", "%d %b, %Y %H:%M:%S")
+# t_o = time_object.time()
+
+
+# print("Time from string:", t_o)
+
+# # calculate future date
+# date_now = datetime.now()
+# print("Today's date:", date_now)
+
+# future_date = date_now + timedelta(days=7)
+# print("Future date is:", future_date)
+
+# calculate difference between two dates
