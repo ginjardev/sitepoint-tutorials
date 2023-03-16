@@ -3,7 +3,7 @@ Tutorial code for the topic "Understanding Python Date and Time with Examples" @
 """
 from datetime import datetime, date, time, timedelta
 import time as t
-
+from pytz import timezone
 
 # # get current date and time
 # current_date_time = datetime.now()
@@ -135,3 +135,76 @@ import time as t
 # print("Future date is:", future_date)
 
 # calculate difference between two dates
+# present_date = date.today()
+# print("Present date:", present_date)
+
+# future_date = date(2023,5, 10)
+# print("Future date:", future_date)
+
+# time_gap = future_date - present_date
+
+# print("Time gap between two dates:", time_gap)
+
+# calculate difference between time delta objects
+
+# time_delta1 = timedelta(days = 2, hours = 1, seconds = 33, weeks=2)
+# time_delta2 = timedelta(days = 4, hours = 11, minutes = 4, seconds = 54)
+
+# result = time_delta1 + time_delta2
+
+# print("Sum of two delta objects:", result)
+
+
+# create dateime object with timezone info
+# tz = timezone('Africa/Accra')
+# date_time_object = datetime.now(tz)
+
+# print("Timezone information:", date_time_object.tzinfo)
+# print("Timezone code:", date_time_object.tzname())
+
+# # switch between timezones
+# accra_timezone = timezone('Africa/Accra')
+
+# accra_datetime = datetime.now(accra_timezone)
+
+# print("Current date time in Accra:", accra_datetime)
+# # switch to New York timezone
+
+# new_york_timezone = timezone('America/New_York')
+# new_york_datetime = accra_datetime.astimezone(new_york_timezone)
+
+# print("Current date time in New York:", new_york_datetime)
+
+#time module
+#get time in seconds since epoch
+time_secs = t.time()
+print("Time in sceconds from epoch", time_secs)
+
+# gmtime()
+gm_time = t.gmtime()
+
+print("Time struct in UTC:", gm_time)
+
+# localtime()
+local_time = t.localtime()
+
+print("Time struct in local time:", local_time)
+
+# ctime() 
+time_in_secs = 1678671984.939945
+
+time_string = t.ctime(time_in_secs)
+print("Time string: ",time_string)
+
+# strftime()
+time_tuple = t.gmtime()
+time_format = "%y/%m/%d %I:%M:%S %p"
+time_in_string = t.strftime(time_format, time_tuple)
+print("Time expressed as formatted string:", time_in_string)
+
+# sleep()
+for i in range(5):
+    lt = t.localtime()
+    seconds = lt.tm_sec
+    print(seconds)
+    t.sleep(2)
