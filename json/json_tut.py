@@ -34,7 +34,7 @@ with open("subject.json", "w", encoding="utf-8") as file_handle:
     json.dump(subject, file_handle, indent=4)
 
 # using .dumps()
-json_data = json.dumps(subject)
+json_data = json.dumps(subject, indent=4)
 print(json_data)
 print(type(json_data))
 
@@ -50,5 +50,5 @@ with open("students.json", "r", encoding="utf-8") as file_handle:
 response = requests.get("https://jsonplaceholder.typicode.com/comments/2")
 comment = json.loads(response.text)
 
-print(comment)
+# print(comment)
 
