@@ -2,8 +2,10 @@
 Tutorial code for the topic "Understanding Python Date and Time with Examples" @SitePoint
 """
 from datetime import datetime, date, time, timedelta
-import time as t
-from pytz import timezone
+import time as time_module
+from zoneinfo import ZoneInfo
+
+
 
 # get current date and time
 current_date_time = datetime.now()
@@ -78,7 +80,10 @@ second = new_dt.second
 print('Seconds: ', second)
 microsecond = new_dt.microsecond
 print('Microseconds: ', microsecond)
-
+tz_info = new_dt.tzinfo
+print('Timezone info: ', tz_info)
+fold = new_dt.fold
+print('Fold: ', fold)
 
 # create timedelta object
 td = timedelta(10, 30, 4300, 3000, 12, 5, 3)
@@ -134,18 +139,14 @@ print("Today's date:", date_now)
 future_date = date_now + timedelta(days=7)
 print("Future date is:", future_date)
 
-# calculate difference between two dates
-present_date = date.today()
-print("Present date:", present_date)
+# calculate difference between two timedelta objects
+time_delta1 = timedelta(days=23, hours=0, minutes=20)
+time_delta2 = timedelta(days=15, seconds=2, microseconds=123, milliseconds=234566, minutes=5, hours=2)
 
-future_date = date(2023,5, 10)
-print("Future date:", future_date)
+result = time_delta1 - time_delta2
+print("Difference between two timedelta objects:", result)
 
-time_gap = future_date - present_date
-
-print("Time gap between two dates:", time_gap)
-
-# calculate difference between time delta objects
+# calculate sum of two timedelta objects
 
 time_delta1 = timedelta(days = 2, hours = 1, seconds = 33, weeks=2)
 time_delta2 = timedelta(days = 4, hours = 11, minutes = 4, seconds = 54)
@@ -156,57 +157,57 @@ print("Sum of two delta objects:", result)
 
 
 # create dateime object with timezone info
-tz = timezone('Africa/Accra')
+tz = ZoneInfo('Africa/Accra')
+print("ZONE INFO", tz)
 date_time_object = datetime.now(tz)
 
 print("Timezone information:", date_time_object.tzinfo)
 print("Timezone code:", date_time_object.tzname())
 
 # switch between timezones
-accra_timezone = timezone('Africa/Accra')
+accra_timezone = ZoneInfo('Africa/Accra')
 
 accra_datetime = datetime.now(accra_timezone)
 
 print("Current date time in Accra:", accra_datetime)
 # switch to New York timezone
 
-new_york_timezone = timezone('America/New_York')
+new_york_timezone = ZoneInfo('America/New_York')
 new_york_datetime = accra_datetime.astimezone(new_york_timezone)
 
 print("Current date time in New York:", new_york_datetime)
 
 # time module
 # get time in seconds since epoch
-time_secs = t.time()
-print("Time in sceconds from epoch", time_secs)
+time_in_seconds = time_module.time()
+print("Time in sceconds from epoch", time_in_seconds)
 
 # gmtime()
-gm_time = t.gmtime()
+utc_time_in_seconds = time_module.gmtime()
 
-print("Time struct in UTC:", gm_time)
+print("Time struct in UTC:", utc_time_in_seconds)
 
 # localtime()
-local_time = t.localtime()
+local_time = time_module.localtime()
 
 print("Time struct in local time:", local_time)
 
 # ctime()
 time_in_secs = 1678671984.939945
 
-time_string = t.ctime(time_in_secs)
+time_string = time_module.ctime(time_in_secs)
 print("Time string: ", time_string)
 
 # strftime()
-time_tuple = t.gmtime()
+time_tuple = time_module.gmtime()
 time_format = "%y/%m/%d %I:%M:%S %p"
-time_in_string = t.strftime(time_format, time_tuple)
+time_in_string = time_module.strftime(time_format, time_tuple)
 print("Time expressed as formatted string:", time_in_string)
 
 # sleep()
 for i in range(5):
-    lt = t.localtime()
-    seconds = lt.tm_sec
+    local_time = time_module.localtime()
+    seconds = local_time.tm_sec
     print(seconds)
-    t.sleep(2)
+    time_module.sleep(2)
 
-hel = {"name": "Hellp", "number": [1, 3, 4], "school": {"name": "talent"}}
