@@ -20,11 +20,11 @@ with open('products.csv', 'w', encoding='utf-8') as file_obj:
 my_dict = {}
 
 with open('employees.csv', 'r', encoding='utf-8') as file_obj:
-    r_o = csv.DictReader(file_obj)
+    reader_object = csv.DictReader(file_obj)
 
     serial_number = 0
 
-    for row in r_o:
+    for row in reader_object:
         serial_number = serial_number + 1
         my_dict[serial_number] = row
     
