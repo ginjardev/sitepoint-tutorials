@@ -68,22 +68,27 @@ from playwright.async_api import async_playwright, Playwright
 
 # wait for function
 
-async def run3(playwright: Playwright):
+
+async def run4(playwright: Playwright):
     chrome = playwright.chromium
     browser = await chrome.launch()
     page = await browser.new_page()
     await page.goto("https://ecommerce-playground.lambdatest.io/")
     # await page.get_by_text("Continue", exact=True).click()
-    buttons = await page.get_by_role("button")
-    await page.wait_for_event("domcontentloaded")
+    await page.wait_for_event("load")
     await page.screenshot(path="screenshot.png")
+    # buttonss = await page.get_by_role("button").all()
+    # buttons = buttonss[:8]
+    # # for i in buttons:
+    # #     print(await i.inner_text())
+    # # print("Done")
     print("Done")
     await browser.close()
 
 
 async def main():
     async with async_playwright() as playwright:
-        await run3(playwright)
+        await run4(playwright)
 
 
 asyncio.run(main())
