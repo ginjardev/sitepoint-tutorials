@@ -75,12 +75,15 @@ async def run4(playwright: Playwright):
     page = await browser.new_page()
     await page.goto("https://ecommerce-playground.lambdatest.io/")
     # await page.get_by_text("Continue", exact=True).click()
-    await page.wait_for_event("load")
+    await page.get_by_role("link", name='Jolio Balia', exact=True).nth(1).click()
+    await page.wait_for_function(
+        "() => new Promise(resolve => setTimeout(resolve, 25000))"
+    )
     await page.screenshot(path="screenshot.png")
-    # buttonss = await page.get_by_role("button").all()
+
     # buttons = buttonss[:8]
-    # # for i in buttons:
-    # #     print(await i.inner_text())
+    # for i in buttonss:
+    #     print(await i.inner_text())
     # # print("Done")
     print("Done")
     await browser.close()
